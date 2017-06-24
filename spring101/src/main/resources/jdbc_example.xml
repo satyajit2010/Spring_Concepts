@@ -35,7 +35,7 @@
 		class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
 		<property name="persistenceXmlLocations">
 			<list>
-				<value>classpath*:persistence.xml</value>
+				<value>classpath:persistence.xml</value>
 			</list>
 		</property>
 		<property name="defaultDataSource" ref="dataSource" />
