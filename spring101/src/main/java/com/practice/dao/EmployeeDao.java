@@ -1,6 +1,6 @@
-package com.practice.jdbc.dao;
+package com.practice.dao;
 
-import com.practice.jdbc.model.Employee;
+import com.practice.model.Employee;
 
 public interface EmployeeDao {
 	Employee getEmployee(String id);

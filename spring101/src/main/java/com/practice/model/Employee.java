@@ -1,8 +1,12 @@
-package com.practice.jdbc.model;
+package com.practice.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+@Entity
 public class Employee {
+	@Id
 	private String eid;
 	private String fname;
 	private String lname;
