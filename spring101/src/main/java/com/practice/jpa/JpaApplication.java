@@ -14,7 +14,6 @@ public class JpaApplication {
 		DepartmentDao departmentDao = applicationContext.getBean(DepartmentDao.class);
 		Employee employee = employeeDao.getEmployee("e1");
 		System.out.println(employee);
-		String deptId = employee.getDepartment().getDeptId();
-		System.out.println(departmentDao.getAllEmployees(deptId));
+		System.out.println(departmentDao.getAllEmployees(employee.getDepartment()));
 	}
 }

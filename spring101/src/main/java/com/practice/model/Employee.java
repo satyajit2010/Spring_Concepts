@@ -1,13 +1,16 @@
 package com.practice.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Employee {
@@ -16,9 +19,12 @@ public class Employee {
 	private String fname;
 	private String lname;
 	private BigDecimal salary;
-	@JoinColumns({@JoinColumn(name="DEPT_ID")})
-	@ManyToOne(targetEntity=Department.class)
+	@ManyToOne(targetEntity = Department.class)
+	@JoinColumns({ @JoinColumn(name = "DEPT_ID") })
 	private Department department;
+
+	@OneToMany(mappedBy = "employee",fetch=FetchType.EAGER)
+	private List<Phone> phone;
 
 	public String getEid() {
 		return eid;
@@ -51,7 +57,6 @@ public class Employee {
 	public void setSalary(BigDecimal salary) {
 		this.salary = salary;
 	}
-	
 
 	public Department getDepartment() {
 		return department;
@@ -61,10 +66,18 @@ public class Employee {
 		this.department = department;
 	}
 
+	public List<Phone> getPhone() {
+		return phone;
+	}
+
+	public void setPhone(List<Phone> phone) {
+		this.phone = phone;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [eid=" + eid + ", fname=" + fname + ", lname=" + lname + ", salary=" + salary + ", department="
-				+ department + "]";
+				+ department + ", phone=" + phone + "]";
 	}
 
 }

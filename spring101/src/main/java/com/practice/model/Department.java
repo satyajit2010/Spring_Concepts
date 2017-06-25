@@ -1,22 +1,18 @@
 package com.practice.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name="departmentalColeagues", query="select e from Employee e where e.department.deptId = :deptId")
 public class Department {
 	@Id
 	@Column(name = "DEPT_ID")
 	private String deptId;
 	@Column(name = "DEPT_NAME")
 	private String deptName;
-
-	@OneToMany(mappedBy = "department")
-	private List<Employee> employees;
 
 	public String getDeptId() {
 		return deptId;
@@ -34,13 +30,7 @@ public class Department {
 		this.deptName = deptName;
 	}
 
-	public List<Employee> getEmployees() {
-		return employees;
-	}
 
-	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
-	}
 
 	@Override
 	public String toString() {
